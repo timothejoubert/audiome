@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/"
+  to = "/home/index.html"
+  force = true
+  status = 200
