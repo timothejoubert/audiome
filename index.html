@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Audiome - Accueil </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <meta itemprop="name" content="Home - donut ">
+    <meta itemprop="description" content="made with cables">
+    <meta itemprop="image" content="screenshot.png">
+    <meta name="description" content="made with cables" />
+    <link rel="stylesheet" href="../stylesheet.css">
+</head>
+<body>
+    <div class="transition">
+        <div class="Loader"></div>
+        <span class="transition_panel"></span>
+    </div>
+
+    <header>
+        <a href="../home/index.html"><h1 class="underline--animated">Audiome</h1></a>
+    </header>
+    
+
+    <main class="homepage-content">
+        <!-- Cables GL -->
+        <div class="container-canvas-home">
+            <canvas class="cache-content canvas-home" id="glcanvas" width="100vw" height="100vh"></canvas>
+            <div class="scroll active_transition">
+                <div class="gradient-scroll"></div>
+                <a href="#article-home">
+                    <p>Scroll</p>
+                    <p>Scroll</p>
+                    <p>Scroll</p>
+                    <p>Scroll</p>
+                    <p>Scroll</p>
+                    <p>Scroll</p>
+                    <p>Scroll</p>
+                    <p>Scroll</p>
+                    <p>Scroll</p>
+                    <p>Scroll</p>
+                    <p>Scroll</p>
+                    <p>Scroll</p>
+                    <p>Scroll</p>
+                    <p>Scroll</p>
+                </a>
+            </div>
+        </div>
+        <!-- lien page menu -->
+        
+
+        <article class="description" id="article-home">
+            <p><span>
+                Audiome est un site web vous proposant une expérience interactive et immersive. Il a pour objectif de faire découvrir les effets audios de base de la musique électronique. Vous êtes invités à utiliser les possibilités du web pour manipuler autrement ces outils.
+            </span></p>
+            <div class="nextpage active_transition">
+                <a href="../menu/menu.html">Menu</a>
+                <span class="bg-nextpage"></span>
+            </div>
+        </article>
+    </main>
+
+    <script type="text/javascript" src="js/libs.core.min.js"></script>
+    <script type="text/javascript" src="js/cables.min.js"></script>
+    <script type="text/javascript" src="js/ops.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="../transition_page.js"></script>
+
+    <script>
+        /**
+         * Called when there was a cables error.
+         * @param {string} errId - ID of the error, e.g. 'NO_WEBGL' or 'NO_WEBAUDIO'
+         *                         when the browser does not support the used APIs
+         * @param {string} errMsg - The error message
+         */
+        function showError(errId, errMsg) {
+            alert('An error occured: ' + errId + ', ' + errMsg);
+        }
+
+        function patchInitialized() {
+            // You can now access the patch object (CABLES.patch), register variable watchers and so on
+        }
+
+        function patchFinishedLoading() {
+            // The patch is ready now, all assets have been loaded
+            $('main').removeClass("homepage-content");
+            console.log('content load');
+            $('.transition').addClass('close-transi');
+            $('canvas').removeClass('cache-content');
+        }
+
+        document.addEventListener('CABLES.jsLoaded', function(event) {
+            CABLES.patch = new CABLES.Patch({
+                patchFile: 'js/Home_-_donut.json',
+                prefixAssetPath: '',
+                glCanvasId: 'glcanvas',
+                glCanvasResizeToWindow: true,
+                onError: showError,
+                onPatchLoaded: patchInitialized,
+                onFinishedLoading: patchFinishedLoading,
+            });
+        });
+
+
+    </script>
+
+</body>
+</html>
