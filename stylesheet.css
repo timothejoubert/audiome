@@ -599,3 +599,32 @@ div.sidebar-cables{
 .in-front2{
     z-index: 40;
 }
+
+
+@media (max-width: 650px) { 
+	header{
+		padding: 10px 30px 0 20px !important;
+	}
+	.burger{
+		top: 10px !important;
+		right: 20px !important;
+	}
+	.description p{
+		font-size: 1.3em !important;
+		line-height: inherit !important;
+		padding: 0 20px !important;
+	}
+	.nextpage a{
+		color: #D5D5D5 !important;
+	}
+	
+	.onglet-aide{
+		padding: 20px !important;
+	}
+	.onglet-aide h3{
+		margin: 40px 0 15px 0 !important;
+	}
+	.definition-effet{
+		width: 100% !important;
+	}
+}
