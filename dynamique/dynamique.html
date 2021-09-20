@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Audiome - Effets dynamiques</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <meta itemprop="name" content="effets dynamiques - rezise window">
+    <meta itemprop="description" content="made with cables">
+    <meta itemprop="image" content="screenshot.png">
+    <meta name="description" content="made with cables" />
+    <link rel="stylesheet" href="../stylesheet.css">
+
+
+</head>
+<body>
+
+    <div class="transition">
+        <div class="Loader"></div>
+        <span class="transition_panel"></span>
+    </div>
+
+    <header>
+        <a href="../home/index.html"><h1 class="underline--animated">Audiome</h1></a>
+    </header>
+
+    <div class="burger">
+        <span></span>
+    </div>
+
+    <ul class="nav-principal">
+        <li class="page-menu"><a href="../menu/menu.html">Menu</a></li>
+        <li class="page-simple"><a href="../404.html">Effet temporel</a></li>
+        <li class="page-simple page-active"><a href="../dynamique/dynamique.html">Effet dynamique</a></li>
+        <li class="page-simple"><a href="../distorsion/distorsion.html">Distorsion</a></li>
+        <li class="page-simple"><a href="../filtres/filtre.html">Filtre</a></li> 
+    </ul>
+
+    <main>
+        <canvas id="glcanvas" width="100vw" height="100vh"></canvas>
+    </main>
+
+    <div class="aide">
+        <div class="circle-bg">
+            <p class="symbole-aide">?</p>
+        </div>
+    </div>
+
+    <div class="onglet-aide">
+        <p class="txt-aide">Aides</p>
+        
+        <div class="txt-central">
+            <h3>Effet dynamiques</h3>
+            <p class="definition-effet">Ces effets ont une action sur la dynamique sonore du signal, c'est à dire le rapport entre le volume perçu maximum et minimum.</p>
+        </div>
+
+        <p class="tuto">
+            Redimensionnez la largeur et la hauteur de votre navigateur.
+        </p>
+    </div>
+
+    <script type="text/javascript"  src="js/tone.js"></script>
+
+    <script type="text/javascript" src="js/libs.core.min.js"></script>
+    <script type="text/javascript" src="js/cables.min.js"></script>
+    <script type="text/javascript" src="js/ops.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="../transition_page.js"></script>
+
+    <script>
+        function showError(errId, errMsg) {
+            alert('An error occured: ' + errId + ', ' + errMsg);
+        }
+
+        function patchInitialized() {
+            // You can now access the patch object (CABLES.patch), register variable watchers and so on
+        }
+
+        function patchFinishedLoading() {
+            // The patch is ready now, all assets have been loaded
+            $('.transition').addClass('close-transi');
+            $('canvas').removeClass('cache-content');
+        }
+
+        document.addEventListener('CABLES.jsLoaded', function(event) {
+            CABLES.patch = new CABLES.Patch({
+                patchFile: 'js/effets_dynamiques_-_rezise_window.json',
+                prefixAssetPath: '',
+                glCanvasId: 'glcanvas',
+                glCanvasResizeToWindow: true,
+                onError: showError,
+                onPatchLoaded: patchInitialized,
+                onFinishedLoading: patchFinishedLoading,
+            });
+        });
+    </script>
+
+</body>
+</html>

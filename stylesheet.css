@@ -1,0 +1,601 @@
+
+/*************************/
+/* stylesheet de timothé */
+/*************************/
+
+
+/*************/
+/* VARIABLES */
+/*************/
+:root{
+    --dark-color: #010101;
+    --light-color: #eeeeee;
+
+    --primary-color: #6f15ff;
+    --second-color: #FF4F4F;
+    --third-color: #ecef4a;
+
+    --width-default: 1px;
+    --border-: solid var(--dark-color) var(--width-default);
+
+    --time-transition: 1500ms;
+}
+
+/*********/
+/* FONTS */
+/*********/
+
+/* poppins */
+@font-face {
+    font-family: "Poppins";
+    src: url("fonts/Black-Black.otf") format("OpenType");
+    font-weight: 800;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("fonts/Black-BlackItalic.otf") format("OpenType");
+    font-weight: 800;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("fonts/Poppins-Bold.otf") format("OpenType");
+    font-weight: 600;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("fonts/Poppins-BoldItalic.otf") format("OpenType");
+    font-weight: 600;
+    font-style: italic;
+}   
+@font-face {
+    font-family: "Poppins";
+    src: url("fonts/Poppins-Medium.otf") format("OpenType");
+    font-weight: 500;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("fonts/Poppins-MediumItalic.otf") format("OpenType");
+    font-weight: 500;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("fonts/Poppins-Regular.otf") format("OpenType");
+    font-weight: 400;
+}/*
+@font-face {
+    font-family: "Poppins";
+    src: url("fonts/Poppins-RegularItalic.otf") format("OpenType");
+    font-weight: 400;
+    font-style: italic;
+}*/
+@font-face {
+    font-family: "Poppins";
+    src: url("fonts/Poppins-Light.otf") format("OpenType");
+    font-weight: 300;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("fonts/Poppins-LightItalic.otf") format("OpenType");
+    font-weight: 300;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("fonts/Poppins-Thin.otf") format("OpenType");
+    font-weight: 200;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("fonts/Poppins-ThinItalic.otf") format("OpenType");
+    font-weight: 200;
+    font-style: italic;
+}
+/*
+@font-face {
+    font-family: "Syne";
+    src: url("fonts/Syne-Extra.otf") format("OpenType");
+    font-weight: 800;
+}*/
+@font-face {
+    font-family: "Syne";
+    src: url("fonts/Syne-Bold.otf") format("OpenType");
+    font-weight: 600;
+}
+@font-face {
+    font-family: "Syne";
+    src: url("fonts/Syne-Regular.otf") format("OpenType");
+    font-weight: 400;
+}
+
+/***********/
+/* COMMUNS */
+/***********/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*:focus{
+    outline: none;
+}
+*::-moz-selection { 
+    background: var(--second-color); 
+    color: var(--light-color);
+}
+*::selection { 
+    background: var(--second-color); 
+    color: var(--light-color);
+}
+body{
+    width: 100%;
+    overflow-x: hidden;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    font-family: "Poppins", sans-serif;
+}
+h1{
+    font-size: 1.4rem;
+    color: var(--light-color);
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+li{
+    list-style: none;
+}
+canvas {
+    display: block;
+    position: absolute;
+    transition: transform var(--time-transition) ease-in-out;
+}
+header{
+    position: fixed;
+    z-index: 50;
+    padding: 30px 30px 0 50px;
+}
+header h1{
+    font-family: "Syne", "Poppins", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+.underline--animated {
+    background: linear-gradient(180deg, transparent 90%, var(--second-color) 0);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 0.5s;
+  }
+  .underline--animated:hover {
+    background-size: 100% 100%;
+  }
+main{
+    min-height: 100vh;
+    background-color: var(--dark-color);
+}
+/* page 404 */
+.transition.page-error{
+    flex-direction: column;
+
+}
+.page-error .Loader{
+    opacity: 0.3;
+}
+.page-error p{
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--light-color);
+    z-index: 10;
+    line-height: 1.5rem;
+}
+/* PAGE TRANSITION */
+.transition{
+    position: absolute;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 25;
+    transition: all var(--time-transition) ease-in-out;
+}
+.transition.close-transi{
+    transform: translateY(-100%);
+}
+.transition_panel{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* image bg */
+    /*
+    background-image: url(transi.jpg);
+    background-size: cover;
+    background-position: center;
+    */
+    background-color: var(--dark-color);
+}
+.Loader {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    max-width: 14.6rem;
+    margin-top: 7.3rem;
+    margin-bottom: 7.3rem;
+    z-index:5;
+  }
+  .Loader:before, .Loader:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    animation-duration: 1.8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    filter: drop-shadow(0 0 0.7555555556rem rgba(255, 255, 255, 0.75));
+  }
+  .Loader:before {
+    width: 100%;
+    padding-bottom: 100%;
+    box-shadow: inset 0 0 0 1.7rem #fff;
+    animation-name: pulsA;
+  }
+  .Loader:after {
+    width: calc(100% - 1.7rem* 2);
+    padding-bottom: calc(100% - 1.7rem* 2);
+    box-shadow: 0 0 0 0 #fff;
+    animation-name: pulsB;
+  }
+  
+  @keyframes pulsA {
+    0% {
+      box-shadow: inset 0 0 0 1.7rem #fff;
+      opacity: 1;
+    }
+    50%,
+    100% {
+      box-shadow: inset 0 0 0 0 #fff;
+      opacity: 0;
+    }
+  }
+  @keyframes pulsB {
+    0%,
+    50% {
+      box-shadow: 0 0 0 0 #fff;
+      opacity: 0;
+    }
+    100% {
+      box-shadow: 0 0 0 1.7rem #fff;
+      opacity: 1;
+    }
+  }
+  
+.cache-content{
+    transform: translateY(100%);
+}
+
+/********/
+/* menu */
+/********/
+
+.burger {
+    position:absolute;
+    top: 50px;
+    right: 30px;
+	width: 40px;
+	height: 40px;
+	margin: auto;
+    cursor: pointer;
+    z-index: 10;
+    background-color: var(--second-color);
+    border-radius: 50%;
+}
+.burger:before, .burger span, .burger:after {
+	width: 60%;
+	height: 3px;
+	display: block;
+	background: #fff;
+	border-radius: 2px;
+	position: absolute;
+    opacity: 1;
+    left: 8px;
+}
+.burger:before, .burger:after {
+    transition: top .35s cubic-bezier(.23,1,.32,1),transform .35s cubic-bezier(.23,1,.32,1),opacity .35s cubic-bezier(.23,1,.32,1),background-color 1.15s cubic-bezier(.86,0,.07,1);
+	-webkit-transition: top .35s cubic-bezier(.23,1,.32,1),-webkit-transform .35s cubic-bezier(.23,1,.32,1),opacity .35s cubic-bezier(.23,1,.32,1),background-color 1.15s cubic-bezier(.86,0,.07,1);
+	content: "";
+}
+.burger:before {
+	top: 10px;
+}
+.burger span {
+	top: 18px;
+}
+.burger:after {
+	top: 26px;
+}
+/* Hover */
+.burger:hover:before {
+	top: 7px;
+}
+.burger:hover:after {
+	top: 29px;
+}
+/* Click */
+.burger.cross span {
+	opacity: 0;
+}
+.burger.cross:before, .burger.cross:after {
+	top: 45%;
+}
+.burger.cross:before {
+	-webkit-transform: rotate(45deg); 
+    -moz-transform: rotate(45deg);  
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=5); /*for IE*/
+}
+.burger.cross:after {
+	-webkit-transform: rotate(-45deg); 
+    -moz-transform: rotate(-45deg);  
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-5); /*for IE*/
+}
+.burger:focus {
+	outline: none;
+}
+
+
+/* nav */
+.nav-principal.open-menu{
+    transform: translateX(0);
+}
+.nav-principal{
+    position: fixed;
+    display:flex;
+    flex-direction: column;
+    top:0;
+    right:0;
+    height: 100vh;
+    width:200px;
+    background-color:var(--dark-color);
+    z-index:8;
+    padding: 130px 0 0 30px;
+    transform: translateX(100%);
+    transition: transform 300ms ease-in-out
+}
+.nav-principal li.page-menu{
+    opacity:0.4;
+}
+.nav-principal li.page-active{
+    color: var(--second-color);
+    opacity:0.4;
+}
+.nav-principal li{
+    color: var(--light-color);
+    padding: 5px 0;
+    opacity:0.2;
+    transition: opacity 300ms ease-in-out;
+}
+.nav-principal li:hover{
+    opacity: 0.6;
+}
+.page-simple{
+    margin-left:10px;
+}
+
+
+
+/********/
+/* HOME */
+/********/
+.homepage-content{
+    height: 0;
+    overflow: hidden;
+}
+.container-canvas-home{
+height: 200vh;
+}
+.scroll{
+    color: var(--light-color);
+    position: absolute;
+    left: 50%;
+    top: 92vh;
+    transform: translateX(-50%);
+
+}
+.gradient-scroll{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    top:0;
+    left:0;
+    background: linear-gradient(180deg, transparent 0%, var(--dark-color) 100%);
+    z-index:1;
+}
+.scroll p{
+    padding: 20px 0;
+    opacity: 0.6;
+}
+.description{
+    position: relative;
+    margin-top:50vh;
+    z-index: 10;
+}
+.description p {
+    font-family: "Syne", "Poppins", Arial, Helvetica, sans-serif;
+    font-weight:700;
+    color: var(--dark-color);
+    font-size: 1.7rem;
+    line-height: 2.5rem;
+    text-align:center;
+    margin: 0 auto 100px auto;
+    max-width: 650px;
+}
+.description span{
+    background-color: var(--light-color);
+}
+.nextpage{
+    position: relative;
+    padding: 20px 0 30px 0;
+    text-align: center;
+}
+.bg-nextpage{
+    position: absolute;
+    display: inline-block;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: var(--second-color);
+    opacity: 0.1;
+    transition: all 300ms ease-in-out;
+}
+.nextpage a{
+    font-family:"Syne", "Poppins", Arial;
+    font-size:60px;
+    position:relative;
+    z-index:2;
+    color: var(--dark-color);
+    transition: all 300ms ease-in-out;
+}
+.nextpage a:hover{
+    opacity: 0.6;
+    color: var(--second-color);
+}
+.nextpage a:hover ~ .bg-nextpage{
+    opacity: 0;
+}
+
+
+/*************/
+/* PAGE MENU */
+/*************/
+
+
+/***************/
+/* ONGLET AIDE */
+/***************/
+
+.sidebar-cables > .sidebar__group, 
+.sidebar-cables > .sidebar__close-button{
+    display:none;
+}
+div.sidebar-cables{
+    top: inherit;
+    left: inherit;
+    bottom:15px;
+    right:100px;
+    z-index:9;
+    
+}
+.sidebar__items{
+    display:flex;
+    padding: 5px 25px;
+}
+.sidebar__item.sidebar__slider:last-child{
+    margin-top: 15px;
+}
+
+.aide{
+    position: absolute;
+    bottom: 15px;
+    right:15px;
+    cursor: pointer;
+    z-index:15;
+}
+.circle-bg{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    height:58px;
+    width:58px;
+    border-radius: 50%;
+    background-color:#222;
+    transition: all 200ms ease-in-out;
+}
+.circle-bg:hover{
+    transform: scale(1.1);
+}
+.circle-bg p {
+    font-size: 2rem;
+}
+.circle-bg p:after{
+    position:absolute;
+    content:'';
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background-color: var(--second-color);
+}
+.sidebar__items{
+    display:flex!important;
+    height: inherit!important;
+}
+/*
+.sidebar__slider-input-wrapper .sidebar__slider-input-active-track{
+    background-color: var(--second-color)!important;
+    color: var(--second-color)!important;
+}*/
+.open-aide{
+    display:flex!important;
+}
+.onglet-aide{
+    display:none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 20px 100px 100px 100px;
+    background-color: #010101ed;
+    z-index:10;
+    text-align:center;  
+}
+.txt-central{
+    max-width:600px;
+}
+.onglet-aide h3{
+    font-size:2rem;
+    margin: 100px 0 15px 0;
+}
+.definition-effet{
+    width:65%;
+    margin: 0 auto 50px auto;
+    text-align:center;
+}
+.onglet-aide .tuto{
+    font-size: 1rem;
+    width:100%;
+    border: 1px solid var(--second-color);
+    padding: 20px;
+    border-radius: 10px;
+    max-width:600px;
+    color: var(--second-color);
+}
+
+.txt-aide{
+    position: relative;
+}
+.txt-aide:after{
+    position: absolute;
+    content:'';
+    top:80%;
+    left:50%;
+    width:20px;
+    height:3px;
+    background-color: var(--second-color);
+    transform: translateX(-50%);
+    margin: 5px 0 75px 0;
+}
+
+/* 404 */
+.in-front1{
+    z-index: 45;
+}
+.in-front2{
+    z-index: 40;
+}
